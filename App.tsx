@@ -1,4 +1,11 @@
-import {Canvas, Image, Skia, SkImage} from '@shopify/react-native-skia';
+import {
+  Canvas,
+  Image,
+  rect,
+  Skia,
+  SkImage,
+  SkSurface,
+} from '@shopify/react-native-skia';
 import React, {useEffect} from 'react';
 import {Dimensions, PixelRatio} from 'react-native';
 import {runOnUI, useSharedValue} from 'react-native-reanimated';
@@ -12,58 +19,67 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => {
       runOnUI(() => {
+        const black = Skia.Color('black');
+        const red = Skia.Color('red');
+
         const offscreenCanvasWidth = WINDOW_WIDTH * ratio;
         const offscreenCanvasHeight = WINDOW_HEIGHT * ratio;
         console.log('offscreenCanvasWidth', offscreenCanvasWidth);
         console.log('offscreenCanvasHeight', offscreenCanvasHeight);
 
         const rootSurface = Skia.Surface.MakeOffscreen(
-          WINDOW_WIDTH * ratio,
-          WINDOW_HEIGHT * ratio,
+          offscreenCanvasWidth,
+          offscreenCanvasHeight,
         );
 
         if (!rootSurface) {
           return;
         }
 
-        const offscreenSurface = Skia.Surface.MakeOffscreen(
-          offscreenCanvasWidth,
-          offscreenCanvasHeight,
-        );
-        if (!offscreenSurface) {
-          return;
+        const rootSurfaceCanvas = rootSurface.getCanvas();
+
+        rootSurfaceCanvas.drawColor(black);
+
+        rootSurface.flush();
+
+        const surfaces: SkSurface[] = [];
+
+        for (let i = 0; i < 10; i++) {
+          const offscreenSurface = Skia.Surface.MakeOffscreen(
+            offscreenCanvasWidth,
+            offscreenCanvasHeight,
+          );
+
+          if (!offscreenSurface) {
+            return;
+          }
+
+          surfaces.push(offscreenSurface);
         }
-
-        offscreenSurface.flush();
-
-        const black = Skia.Color('black');
-        const red = Skia.Color('red');
-
-        const canvas = offscreenSurface.getCanvas();
 
         const snapshots: SkImage[] = [];
 
-        for (let i = 0; i < 10; i++) {
-          const now = performance.now();
-          canvas.clear(i % 2 ? black : red);
+        const bounds = rect(0, 0, WINDOW_WIDTH * ratio, WINDOW_HEIGHT * ratio);
 
+        for (let i = 0; i < surfaces.length; i++) {
+          const offscreenSurface = surfaces[i];
+          const canvas = offscreenSurface.getCanvas();
+
+          canvas.drawColor(i % 2 ? black : red);
+
+          const start1 = performance.now();
           offscreenSurface.flush();
 
-          const snapshot = offscreenSurface.makeImageSnapshot();
+          const snapshot = offscreenSurface.makeImageSnapshot(bounds);
 
-          // snapshot.readPixels();
-          console.log('offscreen snapshot', performance.now() - now);
+          console.log('makeImageSnapshot', performance.now() - start1);
 
           snapshots.push(snapshot);
         }
 
-        canvas.scale(ratio, ratio);
-
-        const rootSurfaceCanvas = rootSurface.getCanvas();
-
         const now = performance.now();
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < snapshots.length; i++) {
           const snapshot = snapshots[i];
 
           rootSurfaceCanvas.drawImage(snapshot, i * 10, i * 10);
@@ -72,6 +88,7 @@ export default function App() {
         rootSurface.flush();
         const image = rootSurface.makeImageSnapshot();
         texture.value = image;
+
         const end = performance.now();
         console.log('draw image', end - now);
       })();
@@ -79,7 +96,7 @@ export default function App() {
   }, []);
 
   return (
-    <Canvas style={{width: WINDOW_WIDTH, height: WINDOW_HEIGHT}}>
+    <Canvas opaque style={{width: WINDOW_WIDTH, height: WINDOW_HEIGHT}}>
       <Image
         image={texture}
         x={0}
