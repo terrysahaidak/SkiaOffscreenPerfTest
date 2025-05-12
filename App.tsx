@@ -77,20 +77,28 @@ export default function App() {
           snapshots.push(snapshot);
         }
 
-        const now = performance.now();
+        function draw() {
+          const now = performance.now();
 
-        for (let i = 0; i < snapshots.length; i++) {
-          const snapshot = snapshots[i];
+          for (let i = 0; i < snapshots.length; i++) {
+            const snapshot = snapshots[i];
 
-          rootSurfaceCanvas.drawImage(snapshot, i * 10, i * 10);
+            rootSurfaceCanvas.drawImage(snapshot, i * 10, i * 10);
+          }
+
+          rootSurface.flush();
+          const image = rootSurface.makeImageSnapshot();
+          texture.value = image;
+
+          const end = performance.now();
+          console.log('draw image', end - now);
         }
 
-        rootSurface.flush();
-        const image = rootSurface.makeImageSnapshot();
-        texture.value = image;
+        draw();
 
-        const end = performance.now();
-        console.log('draw image', end - now);
+        draw();
+
+        draw();
       })();
     }, 5000);
   }, []);
