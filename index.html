@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skia perf test</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script type="text/javascript">
+      window.onload = () => {
+        const canvas = document.getElementById('canvas');
+        const ctx2 = canvas.getContext('2d');
+
+        const image1 = new Image();
+        image1.src = './big_image_1.png';
+
+        const image2 = new Image();
+        image2.src = './big_image_2.png';
+
+        function draw(count) {
+          const now = performance.now();
+
+          for (let i = 0; i < count; i++) {
+            const offscreenCanvas = new OffscreenCanvas(1000, 1000);
+            const ctx = offscreenCanvas.getContext('2d');
+            // ctx.drawImage(image1, i * 10, i * 10);
+            // ctx.drawImage(image2, i * 10, i * 10);
+            const image = offscreenCanvas.transferToImageBitmap();
+          }
+
+          console.log('draw ', count, 'in', performance.now() - now, 'ms');
+
+          //   ctx2.drawImage(image, 0, 0);
+        }
+
+        setTimeout(() => {
+          draw(1);
+
+          setTimeout(() => {
+            draw(100);
+          }, 1000);
+        }, 1000);
+      };
+    </script>
+  </body>
+</html>
