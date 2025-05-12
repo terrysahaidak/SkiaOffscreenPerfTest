@@ -92,7 +92,7 @@ export default function App() {
         const end = performance.now();
         console.log('draw image', end - now);
       })();
-    }, 1000);
+    }, 5000);
   }, []);
 
   return (

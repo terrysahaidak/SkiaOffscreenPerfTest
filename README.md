@@ -1,97 +1,77 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Release run results
 
-# Getting Started
+## Pixel 7 pro
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
-
-## Step 1: Start Metro
-
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+```bash
+05-12 18:18:47.467 27498 27559 I ReactNativeJS: Running "SkiaPerfTest"
+05-12 18:18:50.188 27498 27559 I ReactNativeJS: 'offscreenCanvasWidth', 1440
+05-12 18:18:50.188 27498 27559 I ReactNativeJS: 'offscreenCanvasHeight', 2892
+05-12 18:18:50.388 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 0.12971997261047363
+05-12 18:18:50.394 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 6.011068046092987
+05-12 18:18:50.400 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 6.117025017738342
+05-12 18:18:50.407 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 6.233194947242737
+05-12 18:18:50.412 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 5.412028014659882
+05-12 18:18:50.418 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 5.618651986122131
+05-12 18:18:50.424 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 5.235880970954895
+05-12 18:18:50.430 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 5.984821975231171
+05-12 18:18:50.436 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 5.653931021690369
+05-12 18:18:50.442 27498 27559 I ReactNativeJS: 'makeImageSnapshot', 5.654784977436066
+05-12 18:18:50.451 27498 27559 I ReactNativeJS: 'draw image', 9.395182013511658
 ```
 
-## Step 2: Build and run your app
+## Pixel 4
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+05-12 18:20:04.333 14319 14337 I ReactNativeJS: Running "SkiaPerfTest"
+05-12 18:20:05.400 14319 14337 I ReactNativeJS: 'offscreenCanvasWidth', 1080
+05-12 18:20:05.400 14319 14337 I ReactNativeJS: 'offscreenCanvasHeight', 2214
+05-12 18:20:05.517 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.16901100054383278
+05-12 18:20:05.518 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.5447909999638796
+05-12 18:20:05.518 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.5723950006067753
+05-12 18:20:05.519 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.5396880004554987
+05-12 18:20:05.520 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.6127080004662275
+05-12 18:20:05.520 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.4329679999500513
+05-12 18:20:05.521 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.47354100085794926
+05-12 18:20:05.522 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.5314070004969835
+05-12 18:20:05.522 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.534791998565197
+05-12 18:20:05.523 14319 14337 I ReactNativeJS: 'makeImageSnapshot', 0.4969280008226633
+05-12 18:20:05.529 14319 14337 I ReactNativeJS: 'draw image', 5.454219000414014
 ```
 
-### iOS
+## Samsung a12
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+05-12 18:22:07.750 16480 16530 I ReactNativeJS: Running "SkiaPerfTest"
+05-12 18:22:08.776 16480 16530 I ReactNativeJS: 'offscreenCanvasWidth', 720
+05-12 18:22:08.777 16480 16530 I ReactNativeJS: 'offscreenCanvasHeight', 1557
+05-12 18:22:08.893 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 0.18369197845458984
+05-12 18:22:08.910 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 16.82603907585144
+05-12 18:22:08.920 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 9.697347044944763
+05-12 18:22:08.937 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 15.63950002193451
+05-12 18:22:08.953 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 16.257269024848938
+05-12 18:22:08.972 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 17.508153915405273
+05-12 18:22:08.980 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 8.17122995853424
+05-12 18:22:09.002 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 21.37173104286194
+05-12 18:22:09.028 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 25.115460991859436
+05-12 18:22:09.042 16480 16530 I ReactNativeJS: 'makeImageSnapshot', 13.895153999328613
+05-12 18:22:09.063 16480 16530 I ReactNativeJS: 'draw image', 20.935692071914673
 ```
 
-Then, and every time you update your native dependencies, run:
+## Iphone 11
 
-```sh
-bundle exec pod install
+```bash
+Running "SkiaPerfTest"
+'offscreenCanvasWidth', 828
+'offscreenCanvasHeight', 1792
+'makeImageSnapshot', 1.181124985218048
+'makeImageSnapshot', 2.306125044822693
+'makeImageSnapshot', 2.811042010784149
+'makeImageSnapshot', 2.2384999990463257
+'makeImageSnapshot', 1.6659169793128967
+'makeImageSnapshot', 1.2360000014305115
+'makeImageSnapshot', 2.3372910022735596
+'makeImageSnapshot', 0.7687920331954956
+'makeImageSnapshot', 1.6344580054283142
+'makeImageSnapshot', 0.6816660165786743
+'draw image', 18.10433304309845
 ```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
